@@ -8,6 +8,7 @@
             Title = title;
             CancelButton = cancelButton;
         }
+
         public bool CancelButton { get; }
         public string Text { get; }
         public string Title { get; }

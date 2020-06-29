@@ -10,6 +10,7 @@ namespace CryptoNotes
     {
         public bool ValidLogin { get; private set; }
         private HashValidator validator;
+
         public CheckPasswordForm()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace CryptoNotes
             this.ValidLogin = false;
             this.validator = new HashValidator();
         }
+
         private void buttonCleanup_Click(object sender, EventArgs e)
         {
             if (CMessageBox.ShowDialog(Messages.CleanupCheck))
@@ -26,8 +28,9 @@ namespace CryptoNotes
                 File.Delete(Settings.Files.ArchivePath);
                 File.Delete(Settings.Files.HashPath);
                 Environment.Exit(0);
-            }               
+            }
         }
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             if (textBoxPassword.Text == "") return;
@@ -53,7 +56,9 @@ namespace CryptoNotes
                 });
             }
         }
+
         private void CheckPasswordForm_Shown(object sender, EventArgs e) => Animation.FadeIn(this);
+
         private void LockUI(bool flag)
         {
             Invoke((MethodInvoker)delegate
@@ -63,6 +68,7 @@ namespace CryptoNotes
                 buttonCleanup.Enabled = flag;
             });
         }
+
         private void ShowErrorMessage()
         {
             Invoke((MethodInvoker)delegate

@@ -6,10 +6,10 @@ namespace CryptoNotes
 {
     public class Animation
     {
-        public static void FadeIn(Form sender, int interval = 10)
+        public static void FadeIn(Form sender, int interval = Settings.UI.AnimationInterval)
             => FadeIn(sender, null, interval);
 
-        public static void FadeOut(Form sender, int interval = 10)
+        public static void FadeOut(Form sender, int interval = Settings.UI.AnimationInterval)
             => FadeOut(sender, null, interval);
 
         public static async void FadeIn(Form sender, Action action, int interval = 13)

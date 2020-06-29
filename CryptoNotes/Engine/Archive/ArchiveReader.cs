@@ -1,4 +1,5 @@
 ﻿using CryptoNotes.Engine.Crypto;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -29,7 +30,8 @@ namespace CryptoNotes.Engine.Archive
             {
                 string Title = DecoderStream.ReadNextString();
                 string Text = DecoderStream.ReadNextString();
-                Entries.Add(new Entry(Title, Text));
+                DateTime LastChange = Convert.ToDateTime(DecoderStream.ReadNextString());
+                Entries.Add(new Entry(Title, Text, LastChange));
             }
 
             DecoderStream.Close();

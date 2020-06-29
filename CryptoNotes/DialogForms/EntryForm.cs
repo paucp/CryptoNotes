@@ -8,16 +8,18 @@ namespace CryptoNotes
     {
         public Entry entry;
         public bool EntryCreatedOrEdited = false;
-        private SearchBox searchBox;
-        private string lastKeyword;
         private int lastIndex = 0;
+        private string lastKeyword;
+        private SearchBox searchBox;
 
         #region Search
-        public void search(string  keyword)
+
+        public void search(string keyword)
         {
             lastIndex = richTextBox1.Find(keyword, 0);
             lastKeyword = keyword;
         }
+
         public void searchNext(string keyword)
         {
             if (lastKeyword != keyword) search(keyword);
@@ -28,6 +30,7 @@ namespace CryptoNotes
                     search(keyword);
             }
         }
+
         public void searchPrevious(string keyword)
         {
             if (lastKeyword != keyword)
@@ -41,14 +44,18 @@ namespace CryptoNotes
                 if (lastIndex == -1) searchPrevious(keyword);
             }
         }
+
         private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.searchBox.Close();
         }
-        #endregion
+
+        #endregion Search
+
         public EntryForm(Entry Entry)
         {
             InitializeComponent();
+            this.Size = Settings.UI.EntryFormSize;
             this.panelHeader.BackColor = Settings.UI.ColorAccent;
             this.textBoxTitle.BackColor = Settings.UI.ColorAccent;
             this.Opacity = 0;
@@ -71,27 +78,61 @@ namespace CryptoNotes
             {
                 entry.Title = textBoxTitle.Text;
                 entry.Text = richTextBox1.Text;
+                entry.LastChange = DateTime.Now;
                 EntryCreatedOrEdited = true;
                 Close();
             }
         }
-        private void buttonCancel_Click(object sender, EventArgs e) => Close();
 
-        private void textBoxTitle_Leave(object sender, EventArgs e)
-        {
-            panelTitleTextBox.BackColor = Color.Gainsboro;
-        }
-        private void textBoxTitle_Enter(object sender, EventArgs e)
-        {
-            panelTitleTextBox.BackColor = Color.White;
-        }
+        private void buttonCancel_Click(object sender, EventArgs e) => Close();
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             searchBox.Show();
         }
 
+        private void EntryForm_ResizeEnd(object sender, EventArgs e)
+        {
+            Settings.UI.EntryFormSize = this.Size;
+        }
+
+        private void textBoxTitle_Enter(object sender, EventArgs e)
+        {
+            panelTitleTextBox.BackColor = Color.White;
+        }
+
+        private void textBoxTitle_Leave(object sender, EventArgs e)
+        {
+            panelTitleTextBox.BackColor = Color.Gainsboro;
+        }
+
         #region ContextMenu
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Copy();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Cut();
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Paste();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Redo();
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectAll();
+        }
+
         private void textBoxContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             undoToolStripMenuItem.Enabled = richTextBox1.CanUndo;
@@ -106,31 +147,6 @@ namespace CryptoNotes
             richTextBox1.Undo();
         }
 
-        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Redo();
-        }
-
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Cut();
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Copy();
-        }
-
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Paste();
-        }
-
-        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.SelectAll();
-        }
-        #endregion
-
+        #endregion ContextMenu
     }
 }

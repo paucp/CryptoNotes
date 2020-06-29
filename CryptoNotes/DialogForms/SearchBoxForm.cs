@@ -7,6 +7,7 @@ namespace CryptoNotes
     {
         private EntryForm entryForm;
         private bool textChanged = false;
+
         public SearchBox(EntryForm entryForm)
         {
             InitializeComponent();
@@ -15,6 +16,7 @@ namespace CryptoNotes
             this.panelPasswordTextbox.BackColor = Settings.UI.TextBoxFocusColor;
             this.entryForm = entryForm;
         }
+
         private void SearchBox_Shown(object sender, EventArgs e) => Animation.FadeIn(this);
 
         private void buttonFind_Click(object sender, EventArgs e)
@@ -28,8 +30,8 @@ namespace CryptoNotes
                 }
                 else this.entryForm.searchNext(textBoxKeyword.Text);
             }
-
         }
+
         private void buttonNext_Click(object sender, EventArgs e)
         {
             if (textBoxKeyword.Text != "")

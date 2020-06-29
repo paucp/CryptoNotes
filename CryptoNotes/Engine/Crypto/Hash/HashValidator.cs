@@ -8,17 +8,19 @@ namespace CryptoNotes.Engine.Crypto
     {
         private byte[] Salt;
         private byte[] Hash;
+
         public HashValidator()
         {
             EncodingStream es = new EncodingStream(File.ReadAllBytes(Settings.Files.HashPath));
-            this.Salt = es.ReadNextEntry();
-            this.Hash = es.ReadNextEntry();
+            this.Salt = es.ReadNextBytes();
+            this.Hash = es.ReadNextBytes();
             es.Close();
         }
+
         public bool CheckCandidate(string candidate)
         {
             byte[] candidateBytes = Encoding.UTF8.GetBytes(candidate);
-            byte[] candidateHash = CryptoFunctions.DeriveKey(candidateBytes, this.Salt, Settings.Hash.HashBits, Settings.Hash.HashPBKDF2Iterations);
+            byte[] candidateHash = CryptoFunctions.DeriveKey(candidateBytes, this.Salt, Settings.Hash.HashBytes, Settings.Hash.HashPBKDF2Iterations);
             return CryptoFunctions.SlowEquals(this.Hash, candidateHash);
         }
     }

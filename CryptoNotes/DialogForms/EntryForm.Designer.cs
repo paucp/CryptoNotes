@@ -271,11 +271,13 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(400, 350);
             this.Name = "EntryForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EntryForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EntryForm_FormClosing);
+            this.ResizeEnd += new System.EventHandler(this.EntryForm_ResizeEnd);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.textBoxContextMenu.ResumeLayout(false);

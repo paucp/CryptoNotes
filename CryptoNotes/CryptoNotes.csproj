@@ -60,7 +60,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>password_32.ico</ApplicationIcon>
+    <ApplicationIcon>libro.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>CryptoNotes.Program</StartupObject>
@@ -193,7 +193,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="password_32.ico" />
+    <Content Include="libro.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

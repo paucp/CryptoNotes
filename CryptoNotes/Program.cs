@@ -12,7 +12,8 @@ namespace CryptoNotes
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             bool runMainProgram = false;
-            if (!File.Exists(Settings.Files.HashPath)) {
+            if (!File.Exists(Settings.Files.HashPath))
+            {
                 NewPasswordForm npf = new NewPasswordForm();
                 npf.ShowDialog();
                 runMainProgram = npf.ValidPasswordSet;
@@ -22,7 +23,6 @@ namespace CryptoNotes
                 CheckPasswordForm cpf = new CheckPasswordForm();
                 cpf.ShowDialog();
                 runMainProgram = cpf.ValidLogin;
-
             }
             if (runMainProgram) Application.Run(new MainForm());
         }

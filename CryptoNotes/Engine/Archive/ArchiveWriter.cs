@@ -7,7 +7,7 @@ namespace CryptoNotes.Engine.Archive
     public static class ArchiveWriter
     {
         public static void WriteArchive(List<Entry> entries, byte[] MasterKey)
-        {           
+        {
             byte[] IV = CryptoFunctions.GenerateCryptoSecureBytes(Settings.AES.IVBytes);
             byte[] Salt = CryptoFunctions.GenerateCryptoSecureBytes(Settings.AES.SaltBytes);
             byte[] Key = CryptoFunctions.DeriveKey(MasterKey, Salt, Settings.AES.KeyBytes, Settings.AES.AESPBKDF2Iterations);
@@ -20,10 +20,11 @@ namespace CryptoNotes.Engine.Archive
             FileOutputStream.Write(IV, 0, IV.Length);
             FileOutputStream.Write(Salt, 0, Salt.Length);
             EncoderStream.WriteHeader(entries.Count);
-            foreach(Entry e in entries)
+            foreach (Entry e in entries)
             {
                 EncoderStream.WriteString(e.Title);
                 EncoderStream.WriteString(e.Text);
+                EncoderStream.WriteString(e.LastChange.ToString());
             }
 
             EncoderStream.Close();

@@ -6,7 +6,7 @@ namespace CryptoNotes.Engine.Search
 {
     public class SearchManager
     {
-        public bool CanSearchLastString =>  LastKeyword != null;
+        public bool CanSearchLastString => LastKeyword != null;
 
         private List<Entry> Entries;
         private int ElapsedTime = 0;
@@ -18,6 +18,7 @@ namespace CryptoNotes.Engine.Search
             Entries = entries;
             Task.Run(() => AutoResetSearch());
         }
+
         public int SearchIndexWithLastString()
             => SearchIndex(LastKeyword);
 
@@ -27,13 +28,14 @@ namespace CryptoNotes.Engine.Search
             else
             {
                 keyword = keyword.ToLower();
-                LastSearchIndex = Entries.FindIndex(LastSearchIndex +1, x => keyword.Contains(x.Title.ToLower()) || x.Title.ToLower().Contains(keyword));
+                LastSearchIndex = Entries.FindIndex(LastSearchIndex + 1, x => keyword.Contains(x.Title.ToLower()) || x.Title.ToLower().Contains(keyword));
                 ElapsedTime = 0;
                 LastKeyword = keyword;
                 if (LastSearchIndex == -1 && LastKeyword == keyword) return SearchIndex(keyword);
                 else return LastSearchIndex;
             }
         }
+
         private void AutoResetSearch()
         {
             while (true)

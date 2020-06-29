@@ -45,13 +45,13 @@ namespace CryptoNotes.Engine.Archive
             return BitConverter.ToInt32(Header, 0);
         }
 
-        public byte[] ReadNextEntry()
+        public byte[] ReadNextBytes()
         {
             int Length = ReadHeader();
             return ReadValue(Length);
         }
 
-        public string ReadNextString() => Encoding.UTF8.GetString(ReadNextEntry());
+        public string ReadNextString() => Encoding.UTF8.GetString(ReadNextBytes());
 
         public bool TryClose()
         {
@@ -66,7 +66,7 @@ namespace CryptoNotes.Engine.Archive
             }
         }
 
-        public void WriteEntry(byte[] Value)
+        public void WriteBytes(byte[] Value)
         {
             WriteHeader(Value.Length);
             Write(Value);
@@ -78,7 +78,7 @@ namespace CryptoNotes.Engine.Archive
         public void WriteString(string str)
         {
             if (string.IsNullOrEmpty(str)) WriteHeader(0);
-            else WriteEntry(Encoding.UTF8.GetBytes(str));
+            else WriteBytes(Encoding.UTF8.GetBytes(str));
         }
 
         private byte[] ReadValue(int Length)

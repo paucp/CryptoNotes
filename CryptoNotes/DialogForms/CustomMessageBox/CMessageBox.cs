@@ -22,6 +22,7 @@ namespace CryptoNotes
             labelTitle.Text = null;
             labelText.Text = null;
         }
+
         private string SplitLargeString(string value)
         {
             string temp = value;
@@ -29,6 +30,7 @@ namespace CryptoNotes
             temp = temp.Substring(0, index) + '\n' + temp.Substring(index, value.Length - index);
             return temp;
         }
+
         public CMEssageBoxResult ShowCDialog(string message, string Title, bool ShowCancelButton = false)
         {
             if (message.Length > Settings.UI.CMessageBoxMaxLineLength)
@@ -41,6 +43,7 @@ namespace CryptoNotes
             ShowDialog();
             return Result;
         }
+
         public static bool ShowDialog(Message Message) => ShowDialog(Message.Text, Message.Title, Message.CancelButton);
 
         public static bool ShowDialog(string Text, string Title = null, bool ShowCancelButton = false)
@@ -54,6 +57,7 @@ namespace CryptoNotes
             Result = CMEssageBoxResult.Accept;
             Close();
         }
-        private void CMessageBox_Shown(object sender, EventArgs e) => Animation.FadeIn(this, 10);
+
+        private void CMessageBox_Shown(object sender, EventArgs e) => Animation.FadeIn(this);
     }
 }

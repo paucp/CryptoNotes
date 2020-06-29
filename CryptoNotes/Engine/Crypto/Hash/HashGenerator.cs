@@ -10,10 +10,10 @@ namespace CryptoNotes.Engine.Crypto
         {
             byte[] Key = Encoding.UTF8.GetBytes(Password);
             byte[] Salt = CryptoFunctions.GenerateCryptoSecureBytes(Settings.Hash.SaltBytes);
-            byte[] Hash = CryptoFunctions.DeriveKey(Key, Salt, Settings.Hash.HashBits, Settings.Hash.HashPBKDF2Iterations);
+            byte[] Hash = CryptoFunctions.DeriveKey(Key, Salt, Settings.Hash.HashBytes, Settings.Hash.HashPBKDF2Iterations);
             EncodingStream es = new EncodingStream(File.Open(Settings.Files.HashPath, FileMode.CreateNew));
-            es.WriteEntry(Salt);
-            es.WriteEntry(Hash);
+            es.WriteBytes(Salt);
+            es.WriteBytes(Hash);
             es.Close();
         }
     }
