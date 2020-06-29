@@ -39,7 +39,6 @@ namespace CryptoNotes
         //FILE SETTINGS
         public static class Files
         {
-            public static readonly string DataFolderPath = Application.StartupPath + @"\Data\";
             public static readonly string UserDataFolderPath = Application.StartupPath + @"\UserData\";
             public static readonly string HashPath = UserDataFolderPath + "hash.pm";
             public static readonly string ArchivePath = UserDataFolderPath + "archive.pm";

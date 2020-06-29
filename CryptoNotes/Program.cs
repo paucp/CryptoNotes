@@ -11,7 +11,9 @@ namespace CryptoNotes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            bool runMainProgram = false;
+            if (!Directory.Exists(Settings.Files.UserDataFolderPath))
+                Directory.CreateDirectory(Settings.Files.UserDataFolderPath);
+            bool runMainProgram;
             if (!File.Exists(Settings.Files.HashPath))
             {
                 NewPasswordForm npf = new NewPasswordForm();
