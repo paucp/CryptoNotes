@@ -34,23 +34,23 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonDeleteAll = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.columnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.materialContextMenuStrip1 = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.labelSearchIcon = new System.Windows.Forms.Label();
             this.panelSearchTextbox = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonUndo = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.materialContextMenuStrip1.SuspendLayout();
+            this.listView = new MaterialSkin.Controls.MaterialListView();
+            this.columnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -68,14 +68,14 @@
             this.buttonAdd.Size = new System.Drawing.Size(120, 36);
             this.buttonAdd.TabIndex = 15;
             this.buttonAdd.TabStop = false;
-            this.buttonAdd.Text = "New entry";
+            this.buttonAdd.Text = "New note";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(170)))));
+            this.buttonSave.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonSave.Enabled = false;
             this.buttonSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonSave.FlatAppearance.BorderSize = 0;
@@ -152,82 +152,6 @@
             this.buttonEdit.UseVisualStyleBackColor = false;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // materialListView1
-            // 
-            this.materialListView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnTitle,
-            this.columnDate});
-            this.materialListView1.ContextMenuStrip = this.materialContextMenuStrip1;
-            this.materialListView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Roboto", 24F);
-            this.materialListView1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(12, 102);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.MultiSelect = false;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(562, 305);
-            this.materialListView1.TabIndex = 21;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
-            this.materialListView1.SelectedIndexChanged += new System.EventHandler(this.materialListView1_SelectedIndexChanged);
-            this.materialListView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.materialListView1_KeyDown);
-            this.materialListView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.materialListView1_MouseDoubleClick);
-            // 
-            // columnTitle
-            // 
-            this.columnTitle.Text = "Title";
-            this.columnTitle.Width = 400;
-            // 
-            // columnDate
-            // 
-            this.columnDate.Text = "Date";
-            this.columnDate.Width = 150;
-            // 
-            // materialContextMenuStrip1
-            // 
-            this.materialContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialContextMenuStrip1.Depth = 0;
-            this.materialContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.materialContextMenuStrip1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialContextMenuStrip1.Name = "materialContextMenuStrip1";
-            this.materialContextMenuStrip1.Size = new System.Drawing.Size(147, 76);
-            this.materialContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.materialContextMenuStrip1_Opening);
-            // 
-            // addNewToolStripMenuItem
-            // 
-            this.addNewToolStripMenuItem.Font = new System.Drawing.Font("Roboto", 12F);
-            this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
-            this.addNewToolStripMenuItem.Text = "New entry";
-            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Roboto", 12F);
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // textBoxSearch
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -259,6 +183,8 @@
             // 
             // panelSearchTextbox
             // 
+            this.panelSearchTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSearchTextbox.BackColor = System.Drawing.Color.Gainsboro;
             this.panelSearchTextbox.Location = new System.Drawing.Point(40, 93);
             this.panelSearchTextbox.Name = "panelSearchTextbox";
@@ -273,20 +199,30 @@
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.panel1.Location = new System.Drawing.Point(-6, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(596, 59);
             this.panel1.TabIndex = 28;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(24, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Roboto Light", 20F);
+            this.label1.Font = new System.Drawing.Font("Roboto Light", 22F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(62, 13);
+            this.label1.Location = new System.Drawing.Point(62, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 33);
+            this.label1.Size = new System.Drawing.Size(183, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "CryptoNotes";
             // 
@@ -310,14 +246,82 @@
             this.buttonUndo.UseVisualStyleBackColor = false;
             this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
             // 
-            // pictureBox1
+            // listView
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(18, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 50);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnTitle,
+            this.columnDate});
+            this.listView.ContextMenuStrip = this.contextMenu;
+            this.listView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listView.Depth = 0;
+            this.listView.Font = new System.Drawing.Font("Roboto", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+            this.listView.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.listView.FullRowSelect = true;
+            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(12, 102);
+            this.listView.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listView.MouseState = MaterialSkin.MouseState.OUT;
+            this.listView.MultiSelect = false;
+            this.listView.Name = "listView";
+            this.listView.OwnerDraw = true;
+            this.listView.Size = new System.Drawing.Size(562, 305);
+            this.listView.TabIndex = 21;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.materialListView1_SelectedIndexChanged);
+            this.listView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.materialListView1_KeyDown);
+            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.materialListView1_MouseDoubleClick);
+            // 
+            // columnTitle
+            // 
+            this.columnTitle.Text = "Title";
+            this.columnTitle.Width = 400;
+            // 
+            // columnDate
+            // 
+            this.columnDate.Text = "Date";
+            this.columnDate.Width = 150;
+            // 
+            // contextMenu
+            // 
+            this.contextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.contextMenu.Depth = 0;
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenu.MouseState = MaterialSkin.MouseState.HOVER;
+            this.contextMenu.Name = "materialContextMenuStrip1";
+            this.contextMenu.Size = new System.Drawing.Size(143, 76);
+            this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.materialContextMenuStrip1_Opening);
+            // 
+            // addNewToolStripMenuItem
+            // 
+            this.addNewToolStripMenuItem.Font = new System.Drawing.Font("Roboto", 12F);
+            this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.addNewToolStripMenuItem.Text = "New note";
+            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Roboto", 12F);
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -330,7 +334,7 @@
             this.Controls.Add(this.labelSearchIcon);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonEdit);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.buttonDeleteAll);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonSave);
@@ -339,16 +343,16 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(600, 500);
+            this.MinimumSize = new System.Drawing.Size(600, 430);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CryptoNotes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
-            this.materialContextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,8 +363,8 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonDeleteAll;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
-        private MaterialSkin.Controls.MaterialContextMenuStrip materialContextMenuStrip1;
+        private MaterialSkin.Controls.MaterialListView listView;
+        private MaterialSkin.Controls.MaterialContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Button buttonEdit;

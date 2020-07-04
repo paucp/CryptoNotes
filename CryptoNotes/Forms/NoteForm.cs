@@ -1,58 +1,26 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace CryptoNotes
 {
-    public partial class EntryForm : Form
+    public partial class NoteForm : Form
     {
         public Entry entry;
         public bool EntryCreatedOrEdited = false;
-        private int lastIndex = 0;
-        private string lastKeyword;
         private SearchBox searchBox;
 
         #region Search
-
-        public void search(string keyword)
-        {
-            lastIndex = richTextBox1.Find(keyword, 0);
-            lastKeyword = keyword;
-        }
-
-        public void searchNext(string keyword)
-        {
-            if (lastKeyword != keyword) search(keyword);
-            else
-            {
-                lastIndex = richTextBox1.Find(lastKeyword, lastIndex + 1, RichTextBoxFinds.None);
-                if (lastIndex == -1)
-                    search(keyword);
-            }
-        }
-
-        public void searchPrevious(string keyword)
-        {
-            if (lastKeyword != keyword)
-            {
-                lastIndex = richTextBox1.Find(keyword, 0, RichTextBoxFinds.Reverse);
-                lastKeyword = keyword;
-            }
-            else
-            {
-                lastIndex = richTextBox1.Find(lastKeyword, 0, lastIndex, RichTextBoxFinds.Reverse);
-                if (lastIndex == -1) searchPrevious(keyword);
-            }
-        }
-
         private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.searchBox.Close();
+            this.searchBox.AllowClose();
+            Properties.Settings.Default.NoteFormSize = this.Size;
         }
 
         #endregion Search
 
-        public EntryForm(Entry Entry)
+        public NoteForm(Entry Entry)
         {
             InitializeComponent();
             this.Size = Settings.UI.EntryFormSize;
@@ -60,8 +28,10 @@ namespace CryptoNotes
             this.textBoxTitle.BackColor = Settings.UI.ColorAccent;
             this.Opacity = 0;
             this.BackColor = Color.White;
-            this.entry = Entry;
-            searchBox = new SearchBox(this);
+            this.entry = Entry;            
+            this.Size = Properties.Settings.Default.NoteFormSize;
+            this.richTextBox1.Font = Properties.Settings.Default.NoteFont;
+            this.searchBox = new SearchBox(ref this.richTextBox1);
             Animation.FadeIn(this);
         }
 
@@ -88,7 +58,7 @@ namespace CryptoNotes
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            searchBox.Show();
+            this.searchBox.Show();
         }
 
         private void EntryForm_ResizeEnd(object sender, EventArgs e)
@@ -99,11 +69,13 @@ namespace CryptoNotes
         private void textBoxTitle_Enter(object sender, EventArgs e)
         {
             panelTitleTextBox.BackColor = Color.White;
+            textBoxTitle.ForeColor = Color.White;
         }
 
         private void textBoxTitle_Leave(object sender, EventArgs e)
         {
             panelTitleTextBox.BackColor = Color.Gainsboro;
+            textBoxTitle.ForeColor = Color.Gainsboro;
         }
 
         #region ContextMenu
@@ -148,5 +120,14 @@ namespace CryptoNotes
         }
 
         #endregion ContextMenu
+
+        private void buttonFont_Click(object sender, EventArgs e)
+        {
+            FontDialog fd = new FontDialog();
+            fd.Font = richTextBox1.Font;
+            fd.ShowDialog();
+            richTextBox1.Font = fd.Font;
+            Properties.Settings.Default.NoteFont = fd.Font;
+        }
     }
 }

@@ -11,22 +11,29 @@ namespace CryptoNotes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (!Directory.Exists(Settings.Files.UserDataFolderPath))
-                Directory.CreateDirectory(Settings.Files.UserDataFolderPath);
-            bool runMainProgram;
-            if (!File.Exists(Settings.Files.HashPath))
+            try
             {
-                NewPasswordForm npf = new NewPasswordForm();
-                npf.ShowDialog();
-                runMainProgram = npf.ValidPasswordSet;
+                if (!Directory.Exists(Settings.Files.UserDataFolderPath))
+                    Directory.CreateDirectory(Settings.Files.UserDataFolderPath);
+                bool runMainProgram;
+                if (!File.Exists(Settings.Files.HashPath))
+                {
+                    NewPasswordForm npf = new NewPasswordForm();
+                    npf.ShowDialog();
+                    runMainProgram = npf.ValidPasswordSet;
+                }
+                else
+                {
+                    CheckPasswordForm cpf = new CheckPasswordForm();
+                    cpf.ShowDialog();
+                    runMainProgram = cpf.ValidLogin;
+                }
+                if (runMainProgram) Application.Run(new MainForm());
             }
-            else
+            catch(Exception ex)
             {
-                CheckPasswordForm cpf = new CheckPasswordForm();
-                cpf.ShowDialog();
-                runMainProgram = cpf.ValidLogin;
+                CMessageBox.ShowDialog(ex.Message, "Error");
             }
-            if (runMainProgram) Application.Run(new MainForm());
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CryptoNotes.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MainSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">600, 500</Value>
+    </Setting>
+    <Setting Name="NoteFormSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">800, 600</Value>
+    </Setting>
+    <Setting Name="NoteFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Roboto Medium, 11pt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

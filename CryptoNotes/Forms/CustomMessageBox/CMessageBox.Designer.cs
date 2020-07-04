@@ -112,9 +112,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(299, 141);
-            this.Controls.Add(this.labelText);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAccept);
+            this.Controls.Add(this.labelText);
             this.Controls.Add(this.panelHeader);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

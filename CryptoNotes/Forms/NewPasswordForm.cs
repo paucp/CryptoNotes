@@ -13,8 +13,10 @@ namespace CryptoNotes
         public NewPasswordForm()
         {
             InitializeComponent();
+            this.Opacity = 0;
             this.ValidPasswordSet = false;
             this.panelHeader.BackColor = Settings.UI.ColorAccent;
+            Animation.FadeIn(this);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e) => this.Close();

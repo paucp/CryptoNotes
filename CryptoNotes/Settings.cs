@@ -21,8 +21,8 @@ namespace CryptoNotes
         public static class Hash
         {
             public const int PlaintextMinimumLength = 10;
-            public const int HashPBKDF2Iterations = 4097;
-            public const int HashBytes = 1024;
+            public const int HashPBKDF2Iterations = 65536;
+            public const int HashBytes = 64;
             public const int SaltBytes = 256;
         }
 
@@ -39,9 +39,9 @@ namespace CryptoNotes
         //FILE SETTINGS
         public static class Files
         {
-            public static readonly string UserDataFolderPath = Application.StartupPath + @"\UserData\";
-            public static readonly string HashPath = UserDataFolderPath + "hash.pm";
-            public static readonly string ArchivePath = UserDataFolderPath + "archive.pm";
+            public static readonly string UserDataFolderPath = Application.LocalUserAppDataPath;
+            public static readonly string HashPath = UserDataFolderPath + @"\hash.pm";
+            public static readonly string ArchivePath = UserDataFolderPath + @"\archive.pm";
         }
     }
 }

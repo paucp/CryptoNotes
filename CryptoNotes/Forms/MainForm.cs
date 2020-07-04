@@ -1,5 +1,6 @@
 ﻿using CryptoNotes.Engine.Archive;
 using CryptoNotes.Engine.Crypto;
+using CryptoNotes.Engine.Search;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,7 +16,7 @@ namespace CryptoNotes
         private List<Entry> EntryList;
         private List<Entry> EntryListBackup;
         private AutoCompleteStringCollection TitleList;
-        private Engine.Search.SearchManager SearchMan;
+        private SearchManager SearchMan;
 
         public MainForm()
         {
@@ -26,24 +27,24 @@ namespace CryptoNotes
             this.Opacity = 0;
             this.textBoxSearch.AutoCompleteCustomSource = TitleList;
             this.panel1.BackColor = Settings.UI.ColorAccent;
-            this.labelSearchIcon.Text = Settings.UI.SearchIconText;
+            this.labelSearchIcon.Text = Settings.UI.SearchIconText; 
+            this.Size = Properties.Settings.Default.MainSize;
+            this.listView.Columns[0].Width = 400 + (this.Width - 600);
+            this.listView.HideSelection = true;
             if (File.Exists(Settings.Files.ArchivePath))
-            {
-                var tempList = ArchiveReader.ReadArchive(Session.MasterKey);
-                LoadEntryList(tempList);
-            }
+                LoadEntryList(ArchiveReader.ReadArchive(Session.MasterKey));
             SearchMan = new Engine.Search.SearchManager(ref EntryList);
+
             Animation.FadeIn(this);
         }
-
         private void LoadEntryList(List<Entry> entries)
         {
             this.EntryList = new List<Entry>();
-            materialListView1.BeginUpdate();
-            materialListView1.Items.Clear();
+            listView.BeginUpdate();
+            listView.Items.Clear();
             foreach (Entry pass in entries.ToList()) AddEntry(pass);
             UpdateNameList();
-            materialListView1.EndUpdate();
+            listView.EndUpdate();
         }
 
         private void AddEntry(Entry entry)
@@ -51,16 +52,23 @@ namespace CryptoNotes
             ListViewItem item = new ListViewItem(entry.Title);
             item.SubItems.Add(entry.LastChange.ToShortDateString() + " " + entry.LastChange.ToShortTimeString());
             EntryList.Add(entry);
-            materialListView1.Items.Add(item);
+            listView.Items.Add(item);
         }
 
-        private void changeSavedStatus(bool newSaveStatus)
+        private void changeSavedStatus(bool isSavedNew)
         {
-            this.ArchiveSaved = newSaveStatus;
-            this.buttonSave.Enabled = !newSaveStatus;
-            this.buttonUndo.Enabled = !newSaveStatus;
-            if (!newSaveStatus)
+            this.ArchiveSaved = isSavedNew;
+            this.buttonSave.Enabled = !isSavedNew;
+            this.buttonUndo.Enabled = !isSavedNew;
+            if (!isSavedNew)
+            {
+                this.buttonSave.BackColor = Settings.UI.SaveColorAccent;
                 this.EntryListBackup = EntryList.ToList();
+            }
+            else
+            {
+                this.buttonSave.BackColor = Color.WhiteSmoke;
+            }
         }
 
         private void SaveChanges()
@@ -76,7 +84,7 @@ namespace CryptoNotes
             var entry = EntryList[index];
             ListViewItem item = new ListViewItem(entry.Title);
             item.SubItems.Add(entry.LastChange.ToShortDateString() + " " + entry.LastChange.ToShortTimeString());
-            materialListView1.Items[index] = item;
+            listView.Items[index] = item;
         }
 
         private void UpdateNameList()
@@ -89,7 +97,7 @@ namespace CryptoNotes
 
         private void MainForm_ResizeEnd(object sender, EventArgs e)
         {
-            materialListView1.Columns[0].Width = 400 + (this.Width - 600);
+            listView.Columns[0].Width = 400 + (this.Width - 600);
         }
 
         private void materialListView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -97,7 +105,7 @@ namespace CryptoNotes
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            EntryForm NewPassword = new EntryForm(new Entry());
+            NoteForm NewPassword = new NoteForm(new Entry());
             NewPassword.ShowDialog();
             if (NewPassword.EntryCreatedOrEdited)
             {
@@ -112,9 +120,9 @@ namespace CryptoNotes
             if (CMessageBox.ShowDialog(Messages.DeleteEntryCheck))
             {
                 changeSavedStatus(false);
-                int index = materialListView1.SelectedIndices[0];
+                int index = listView.SelectedIndices[0];
                 EntryList.RemoveAt(index);
-                materialListView1.Items.RemoveAt(index);
+                listView.Items.RemoveAt(index);
                 UpdateNameList();
             }
         }
@@ -125,15 +133,15 @@ namespace CryptoNotes
             {
                 changeSavedStatus(false);
                 EntryList.Clear();
-                materialListView1.Items.Clear();
+                listView.Items.Clear();
                 UpdateNameList();
             }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            int index = materialListView1.SelectedIndices[0];
-            EntryForm editEntryForm = new EntryForm(new Entry());
+            int index = listView.SelectedIndices[0];
+            NoteForm editEntryForm = new NoteForm(new Entry());
             editEntryForm.ShowData(EntryList[index]);
             editEntryForm.ShowDialog();
             if (editEntryForm.EntryCreatedOrEdited)
@@ -148,11 +156,21 @@ namespace CryptoNotes
         private void buttonSave_Click(object sender, EventArgs e) => SaveChanges();
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
-        => e.Cancel = (!ArchiveSaved && !CMessageBox.ShowDialog(Messages.ChangesCheck));
+        {
+           if(!ArchiveSaved && !CMessageBox.ShowDialog(Messages.ChangesCheck))
+            {
+                e.Cancel = true;
+            }
+           else
+            {
+                Properties.Settings.Default.MainSize = this.Size;
+                Properties.Settings.Default.Save();
+            }
+        }
 
         private void materialListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool enable = materialListView1.SelectedItems.Count != 0;
+            bool enable = listView.SelectedItems.Count != 0;
             buttonEdit.Enabled = enable;
             buttonDelete.Enabled = enable;
         }
@@ -179,7 +197,7 @@ namespace CryptoNotes
 
         private void materialContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            bool enable = materialListView1.SelectedItems.Count != 0;
+            bool enable = listView.SelectedItems.Count != 0;
             deleteToolStripMenuItem.Enabled = enable;
             editToolStripMenuItem.Enabled = enable;
         }
@@ -211,11 +229,11 @@ namespace CryptoNotes
         {
             if (index != -1)
             {
-                materialListView1.Select();
-                materialListView1.Focus();
-                materialListView1.Items[index].Focused = true;
-                materialListView1.Items[index].Selected = true;
-                materialListView1.Items[index].EnsureVisible();
+                listView.Select();
+                listView.Focus();
+                listView.Items[index].Focused = true;
+                listView.Items[index].Selected = true;
+                listView.Items[index].EnsureVisible();
             }
         }
 

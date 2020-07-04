@@ -60,7 +60,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>libro.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>CryptoNotes.Program</StartupObject>
@@ -84,42 +84,40 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="MaterialSkin">
-      <HintPath>C:\Users\PauCP\Desktop\MaterialSkin.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DialogForms\SearchBoxForm.cs">
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialForm.cs" />
+    <Compile Include="Forms\SearchBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogForms\SearchBoxForm.Designer.cs">
+    <Compile Include="Forms\SearchBoxForm.Designer.cs">
       <DependentUpon>SearchBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DialogForms\CustomMessageBox\CMessageBox.cs">
+    <Compile Include="Forms\CustomMessageBox\CMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogForms\CustomMessageBox\CMessageBox.Designer.cs">
+    <Compile Include="Forms\CustomMessageBox\CMessageBox.Designer.cs">
       <DependentUpon>CMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine\Archive\ArchiveWriter.cs" />
     <Compile Include="Engine\Archive\ArchiveReader.cs" />
-    <Compile Include="DialogForms\EntryForm.cs">
+    <Compile Include="Forms\NoteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogForms\EntryForm.Designer.cs">
-      <DependentUpon>EntryForm.cs</DependentUpon>
+    <Compile Include="Forms\NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DialogForms\Animation\Animation.cs" />
-    <Compile Include="DialogForms\CheckPasswordForm.cs">
+    <Compile Include="Forms\Animation\Animation.cs" />
+    <Compile Include="Forms\CheckPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogForms\CheckPasswordForm.Designer.cs">
+    <Compile Include="Forms\CheckPasswordForm.Designer.cs">
       <DependentUpon>CheckPasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine\Crypto\AESStream.cs" />
@@ -130,55 +128,103 @@
     <Compile Include="Engine\Crypto\Session.cs" />
     <Compile Include="Engine\Crypto\SingleUseAESKey.cs" />
     <Compile Include="Engine\Entry.cs" />
-    <Compile Include="DialogForms\MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogForms\MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DialogForms\NewPasswordForm.cs">
+    <Compile Include="Forms\NewPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogForms\NewPasswordForm.Designer.cs">
+    <Compile Include="Forms\NewPasswordForm.Designer.cs">
       <DependentUpon>NewPasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine\Search\SearchManager.cs" />
+    <Compile Include="Forms\MaterialSkin\Animations\AnimationDirection.cs" />
+    <Compile Include="Forms\MaterialSkin\Animations\AnimationManager.cs" />
+    <Compile Include="Forms\MaterialSkin\Animations\Animations.cs" />
+    <Compile Include="Forms\MaterialSkin\ColorScheme.cs" />
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialDivider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialFlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialRaisedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialSingleLineTextField.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\Controls\MaterialTabSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSkin\DrawHelper.cs" />
+    <Compile Include="Forms\MaterialSkin\IMaterialControl.cs" />
+    <Compile Include="Forms\MaterialSkin\MaterialSkinManager.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
-    <EmbeddedResource Include="DialogForms\SearchBoxForm.resx">
+    <EmbeddedResource Include="Forms\SearchBoxForm.resx">
       <DependentUpon>SearchBoxForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogForms\EntryForm.resx">
-      <DependentUpon>EntryForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogForms\CustomMessageBox\CMessageBox.resx">
+    <EmbeddedResource Include="Forms\CustomMessageBox\CMessageBox.resx">
       <DependentUpon>CMessageBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogForms\CheckPasswordForm.resx">
+    <EmbeddedResource Include="Forms\CheckPasswordForm.resx">
       <DependentUpon>CheckPasswordForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogForms\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogForms\NewPasswordForm.resx">
+    <EmbeddedResource Include="Forms\NewPasswordForm.resx">
       <DependentUpon>NewPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -193,10 +239,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="libro.ico" />
+    <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Roboto-Medium.ttf" />
+    <None Include="Resources\Roboto-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

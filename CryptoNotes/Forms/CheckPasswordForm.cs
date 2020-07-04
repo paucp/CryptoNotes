@@ -19,6 +19,7 @@ namespace CryptoNotes
             this.panelPasswordTextbox.BackColor = Settings.UI.TextBoxFocusColor;
             this.ValidLogin = false;
             this.validator = new HashValidator();
+            Animation.FadeIn(this);
         }
 
         private void buttonCleanup_Click(object sender, EventArgs e)
@@ -57,7 +58,10 @@ namespace CryptoNotes
             }
         }
 
-        private void CheckPasswordForm_Shown(object sender, EventArgs e) => Animation.FadeIn(this);
+        private void CheckPasswordForm_Shown(object sender, EventArgs e)
+        {
+
+        }
 
         private void LockUI(bool flag)
         {

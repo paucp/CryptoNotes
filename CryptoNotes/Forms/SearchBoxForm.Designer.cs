@@ -55,7 +55,7 @@
             this.labelHeader.ForeColor = System.Drawing.Color.White;
             this.labelHeader.Location = new System.Drawing.Point(14, 11);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(70, 19);
+            this.labelHeader.Size = new System.Drawing.Size(69, 18);
             this.labelHeader.TabIndex = 23;
             this.labelHeader.Text = "Keyword:";
             // 
@@ -82,7 +82,7 @@
             this.buttonFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFind.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFind.Location = new System.Drawing.Point(10, 85);
+            this.buttonFind.Location = new System.Drawing.Point(10, 90);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(86, 35);
             this.buttonFind.TabIndex = 22;
@@ -109,7 +109,7 @@
             this.buttonNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNext.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNext.Location = new System.Drawing.Point(102, 85);
+            this.buttonNext.Location = new System.Drawing.Point(102, 90);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(86, 35);
             this.buttonNext.TabIndex = 27;
@@ -127,7 +127,7 @@
             this.buttonPrev.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrev.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrev.Location = new System.Drawing.Point(194, 85);
+            this.buttonPrev.Location = new System.Drawing.Point(194, 90);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(113, 35);
             this.buttonPrev.TabIndex = 28;
@@ -141,7 +141,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(319, 130);
+            this.ClientSize = new System.Drawing.Size(319, 137);
             this.Controls.Add(this.buttonPrev);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.panelPasswordTextbox);
@@ -158,6 +158,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Find";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchBox_FormClosing);
             this.Shown += new System.EventHandler(this.SearchBox_Shown);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();

@@ -1,6 +1,6 @@
 ﻿namespace CryptoNotes
 {
-    partial class EntryForm
+    partial class NoteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,9 @@
             this.panelTitleTextBox = new System.Windows.Forms.Panel();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonFind = new System.Windows.Forms.Button();
+            this.buttonFont = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.textBoxContextMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,21 +48,21 @@
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonFind = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.textBoxContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxTitle
             // 
+            this.textBoxTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTitle.Font = new System.Drawing.Font("Roboto Medium", 14F);
+            this.textBoxTitle.Font = new System.Drawing.Font("Roboto", 13F);
             this.textBoxTitle.ForeColor = System.Drawing.Color.White;
-            this.textBoxTitle.Location = new System.Drawing.Point(40, 27);
-            this.textBoxTitle.MaxLength = 128;
+            this.textBoxTitle.Location = new System.Drawing.Point(227, 25);
+            this.textBoxTitle.MaxLength = 62;
+            this.textBoxTitle.MinimumSize = new System.Drawing.Size(310, 0);
             this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(310, 23);
+            this.textBoxTitle.Size = new System.Drawing.Size(310, 21);
             this.textBoxTitle.TabIndex = 17;
             this.textBoxTitle.Text = "Note Title";
             this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -80,8 +83,10 @@
             // 
             // panelTitleTextBox
             // 
+            this.panelTitleTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelTitleTextBox.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelTitleTextBox.Location = new System.Drawing.Point(17, 52);
+            this.panelTitleTextBox.Location = new System.Drawing.Point(207, 52);
+            this.panelTitleTextBox.MinimumSize = new System.Drawing.Size(348, 0);
             this.panelTitleTextBox.Name = "panelTitleTextBox";
             this.panelTitleTextBox.Size = new System.Drawing.Size(348, 2);
             this.panelTitleTextBox.TabIndex = 33;
@@ -125,6 +130,55 @@
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Location = new System.Drawing.Point(16, 507);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(754, 2);
+            this.panel1.TabIndex = 34;
+            this.panel1.TabStop = true;
+            // 
+            // buttonFind
+            // 
+            this.buttonFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonFind.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonFind.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonFind.FlatAppearance.BorderSize = 0;
+            this.buttonFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.buttonFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFind.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFind.Location = new System.Drawing.Point(16, 515);
+            this.buttonFind.Name = "buttonFind";
+            this.buttonFind.Size = new System.Drawing.Size(92, 34);
+            this.buttonFind.TabIndex = 35;
+            this.buttonFind.TabStop = false;
+            this.buttonFind.Text = "Find";
+            this.buttonFind.UseVisualStyleBackColor = false;
+            this.buttonFind.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // buttonFont
+            // 
+            this.buttonFont.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonFont.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonFont.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonFont.FlatAppearance.BorderSize = 0;
+            this.buttonFont.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonFont.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.buttonFont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFont.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFont.Location = new System.Drawing.Point(114, 515);
+            this.buttonFont.Name = "buttonFont";
+            this.buttonFont.Size = new System.Drawing.Size(74, 34);
+            this.buttonFont.TabIndex = 37;
+            this.buttonFont.TabStop = false;
+            this.buttonFont.Text = "Font";
+            this.buttonFont.UseVisualStyleBackColor = false;
+            this.buttonFont.Click += new System.EventHandler(this.buttonFont_Click);
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -138,7 +192,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(16, 84);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(752, 421);
+            this.richTextBox1.Size = new System.Drawing.Size(756, 421);
             this.richTextBox1.TabIndex = 32;
             this.richTextBox1.Text = "";
             // 
@@ -225,42 +279,13 @@
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.searchToolStripMenuItem.Text = "Search     (Ctrl+F)";
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Location = new System.Drawing.Point(16, 507);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 2);
-            this.panel1.TabIndex = 34;
-            this.panel1.TabStop = true;
-            // 
-            // buttonFind
-            // 
-            this.buttonFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonFind.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonFind.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonFind.FlatAppearance.BorderSize = 0;
-            this.buttonFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.buttonFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.buttonFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFind.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFind.Location = new System.Drawing.Point(16, 515);
-            this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(92, 34);
-            this.buttonFind.TabIndex = 35;
-            this.buttonFind.TabStop = false;
-            this.buttonFind.Text = "Find";
-            this.buttonFind.UseVisualStyleBackColor = false;
-            this.buttonFind.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // EntryForm
+            // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.buttonFont);
             this.Controls.Add(this.buttonFind);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.richTextBox1);
@@ -271,8 +296,8 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(400, 350);
-            this.Name = "EntryForm";
+            this.MinimumSize = new System.Drawing.Size(415, 350);
+            this.Name = "NoteForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EntryForm";
@@ -305,5 +330,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.Button buttonFind;
+        private System.Windows.Forms.Button buttonFont;
     }
 }
