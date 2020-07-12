@@ -1,10 +1,10 @@
-﻿using System;
+﻿using MaterialSkin.Animations;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using MaterialSkin.Animations;
 
 namespace MaterialSkin.Controls
 {
@@ -12,14 +12,18 @@ namespace MaterialSkin.Controls
     {
         [Browsable(false)]
         public int Depth { get; set; }
+
         [Browsable(false)]
         public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
+
         [Browsable(false)]
         public MouseState MouseState { get; set; }
+
         [Browsable(false)]
         public Point MouseLocation { get; set; }
 
         private bool ripple;
+
         [Category("Behavior")]
         public bool Ripple
         {
@@ -40,14 +44,17 @@ namespace MaterialSkin.Controls
 
         // animation managers
         private readonly AnimationManager _animationManager;
+
         private readonly AnimationManager _rippleAnimationManager;
 
         // size related variables which should be recalculated onsizechanged
         private Rectangle _radioButtonBounds;
+
         private int _boxOffset;
 
         // size constants
         private const int RADIOBUTTON_SIZE = 19;
+
         private const int RADIOBUTTON_SIZE_HALF = RADIOBUTTON_SIZE / 2;
         private const int RADIOBUTTON_OUTER_CIRCLE_WIDTH = 2;
         private const int RADIOBUTTON_INNER_CIRCLE_SIZE = RADIOBUTTON_SIZE - (2 * RADIOBUTTON_OUTER_CIRCLE_WIDTH);
@@ -77,6 +84,7 @@ namespace MaterialSkin.Controls
             Ripple = true;
             MouseLocation = new Point(-1, -1);
         }
+
         private void OnSizeChanged(object sender, EventArgs eventArgs)
         {
             _boxOffset = Height / 2 - (int)Math.Ceiling(RADIOBUTTON_SIZE / 2d);

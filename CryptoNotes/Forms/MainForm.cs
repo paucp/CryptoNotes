@@ -27,7 +27,7 @@ namespace CryptoNotes
             this.Opacity = 0;
             this.textBoxSearch.AutoCompleteCustomSource = TitleList;
             this.panel1.BackColor = Settings.UI.ColorAccent;
-            this.labelSearchIcon.Text = Settings.UI.SearchIconText; 
+            this.labelSearchIcon.Text = Settings.UI.SearchIconText;
             this.Size = Properties.Settings.Default.MainSize;
             this.listView.Columns[0].Width = 400 + (this.Width - 600);
             this.listView.HideSelection = true;
@@ -37,6 +37,7 @@ namespace CryptoNotes
 
             Animation.FadeIn(this);
         }
+
         private void LoadEntryList(List<Entry> entries)
         {
             this.EntryList = new List<Entry>();
@@ -157,11 +158,11 @@ namespace CryptoNotes
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-           if(!ArchiveSaved && !CMessageBox.ShowDialog(Messages.ChangesCheck))
+            if (!ArchiveSaved && !CMessageBox.ShowDialog(Messages.ChangesCheck))
             {
                 e.Cancel = true;
             }
-           else
+            else
             {
                 Properties.Settings.Default.MainSize = this.Size;
                 Properties.Settings.Default.Save();

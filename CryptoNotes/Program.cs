@@ -30,7 +30,7 @@ namespace CryptoNotes
                 }
                 if (runMainProgram) Application.Run(new MainForm());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 CMessageBox.ShowDialog(ex.Message, "Error");
             }

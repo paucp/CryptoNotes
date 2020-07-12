@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace CryptoNotes
@@ -12,6 +11,7 @@ namespace CryptoNotes
         private SearchBox searchBox;
 
         #region Search
+
         private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.searchBox.AllowClose();
@@ -28,7 +28,7 @@ namespace CryptoNotes
             this.textBoxTitle.BackColor = Settings.UI.ColorAccent;
             this.Opacity = 0;
             this.BackColor = Color.White;
-            this.entry = Entry;            
+            this.entry = Entry;
             this.Size = Properties.Settings.Default.NoteFormSize;
             this.richTextBox1.Font = Properties.Settings.Default.NoteFont;
             this.searchBox = new SearchBox(ref this.richTextBox1);

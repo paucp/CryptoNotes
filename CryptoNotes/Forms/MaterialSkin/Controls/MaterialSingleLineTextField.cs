@@ -1,9 +1,9 @@
-﻿using System;
+﻿using MaterialSkin.Animations;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using MaterialSkin.Animations;
 
 namespace MaterialSkin.Controls
 {
@@ -12,8 +12,10 @@ namespace MaterialSkin.Controls
         //Properties for managing the material design properties
         [Browsable(false)]
         public int Depth { get; set; }
+
         [Browsable(false)]
         public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
+
         [Browsable(false)]
         public MouseState MouseState { get; set; }
 
@@ -30,6 +32,7 @@ namespace MaterialSkin.Controls
 
         public void SetMaxLength(int value)
         { _baseTextBox.MaxLength = value; }
+
         public string SelectedText { get { return _baseTextBox.SelectedText; } set { _baseTextBox.SelectedText = value; } }
         public string Hint { get { return _baseTextBox.Hint; } set { _baseTextBox.Hint = value; } }
 
@@ -40,12 +43,23 @@ namespace MaterialSkin.Controls
         public bool UseSystemPasswordChar { get { return _baseTextBox.UseSystemPasswordChar; } set { _baseTextBox.UseSystemPasswordChar = value; } }
         public char PasswordChar { get { return _baseTextBox.PasswordChar; } set { _baseTextBox.PasswordChar = value; } }
 
-        public void SelectAll() { _baseTextBox.SelectAll(); }
-        public void Clear() { _baseTextBox.Clear(); }
-        public new void Focus() { _baseTextBox.Focus(); }
+        public void SelectAll()
+        {
+            _baseTextBox.SelectAll();
+        }
 
+        public void Clear()
+        {
+            _baseTextBox.Clear();
+        }
+
+        public new void Focus()
+        {
+            _baseTextBox.Focus();
+        }
 
         # region Forwarding events to baseTextBox
+
         public event EventHandler AcceptsTabChanged
         {
             add
@@ -945,8 +959,8 @@ namespace MaterialSkin.Controls
                 _baseTextBox.VisibleChanged -= value;
             }
         }
-        #endregion
 
+        #endregion
 
         public MaterialSingleLineTextField()
         {
@@ -1044,6 +1058,7 @@ namespace MaterialSkin.Controls
             private const char NonVisualStylePasswordChar = '\u002A';
 
             private string hint = string.Empty;
+
             public string Hint
             {
                 get { return hint; }
@@ -1055,6 +1070,7 @@ namespace MaterialSkin.Controls
             }
 
             private char _passwordChar = EmptyChar;
+
             public new char PasswordChar
             {
                 get { return _passwordChar; }
@@ -1083,6 +1099,7 @@ namespace MaterialSkin.Controls
             }
 
             private char _useSystemPasswordChar = EmptyChar;
+
             public new bool UseSystemPasswordChar
             {
                 get { return _useSystemPasswordChar != EmptyChar; }
@@ -1122,18 +1139,23 @@ namespace MaterialSkin.Controls
                     case "Undo":
                         Undo();
                         break;
+
                     case "Cut":
                         Cut();
                         break;
+
                     case "Copy":
                         Copy();
                         break;
+
                     case "Paste":
                         Paste();
                         break;
+
                     case "Delete":
                         SelectedText = string.Empty;
                         break;
+
                     case "Select All":
                         SelectAll();
                         break;

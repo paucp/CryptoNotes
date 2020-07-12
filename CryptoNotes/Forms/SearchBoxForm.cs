@@ -11,7 +11,6 @@ namespace CryptoNotes
         private int lastIndex = 0;
         private string lastKeyword;
 
-
         public void search(string keyword)
         {
             lastIndex = richTextBox.Find(keyword, 0);
@@ -22,7 +21,7 @@ namespace CryptoNotes
         {
             if (lastKeyword != keyword) search(keyword);
             else
-            {                
+            {
                 lastIndex = richTextBox.Find(lastKeyword, lastIndex + 1, RichTextBoxFinds.None);
                 if (lastIndex == -1) search(keyword);
             }
@@ -47,6 +46,7 @@ namespace CryptoNotes
             this.allowClose = true;
             this.Close();
         }
+
         public SearchBox(ref RichTextBox richTextBox)
         {
             InitializeComponent();
@@ -95,7 +95,7 @@ namespace CryptoNotes
 
         private void SearchBox_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(!this.allowClose)
+            if (!this.allowClose)
             {
                 e.Cancel = true;
                 this.Hide();

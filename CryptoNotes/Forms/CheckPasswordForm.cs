@@ -60,7 +60,6 @@ namespace CryptoNotes
 
         private void CheckPasswordForm_Shown(object sender, EventArgs e)
         {
-
         }
 
         private void LockUI(bool flag)
